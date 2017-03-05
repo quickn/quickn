@@ -1,6 +1,6 @@
 package cn.json;
 
-import cn.json.hibernate.HibernateTemplate;
+import cn.json.quicknCore.hibernate.HibernateTemplate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 

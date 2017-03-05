@@ -1,12 +1,11 @@
 package cn.json;
 
-import cn.json.annotation.AnnotationImp;
-import cn.json.annotation.MethodAnnotation;
+import cn.json.quicknCore.annotation.AnnotationImp;
+import cn.json.quicknCore.annotation.MethodAnnotation;
 import junit.framework.TestCase;
 import org.junit.Test;
 
 import java.lang.annotation.Annotation;
-import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<Target>System.out</Target>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%-20(%d{HH:mm:ss.SSS} [%thread]) %-5level %logger{80} -%msg%n</Pattern>
+		</layout>
+	</appender>
+
+	<appender name="errlog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+          <level>ERROR</level>
+          <onMatch>ACCEPT</onMatch>
+          <onMismatch>DENY</onMismatch>
+        </filter>
+		<Append>true</Append>
+		<BufferedIO>true</BufferedIO>
+		<BufferSize>2048</BufferSize>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>./logs/errlog.%d{yyyy-MM-dd}.log</FileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%-20(%d{HH:mm:ss.SSS} [%thread]) %-5level %logger{80} -%msg%n</Pattern>
+		</layout>
+	</appender>
+	
+	<appender name="syslog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<Append>true</Append>
+		<BufferedIO>true</BufferedIO>
+		<BufferSize>2048</BufferSize>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>./logs/syslog.%d{yyyy-MM-dd}.log</FileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%-20(%d{HH:mm:ss.SSS} [%thread]) %-5level %logger{80} -%msg%n</Pattern>
+		</layout>
+	</appender>
+	
+	<appender name="bizlog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<Append>true</Append>
+		<BufferedIO>true</BufferedIO>
+		<BufferSize>2048</BufferSize>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>./logs/bizlog.%d{yyyy-MM-dd}.log</FileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%-20(%d{HH:mm:ss.SSS} [%thread]) %-5level %logger{80} -%msg%n</Pattern>
+		</layout>
+	</appender>
+	
+	<logger name="bizlog">
+		<appender-ref ref="bizlog" />
+    </logger>
+    
+    <logger name="syslog">
+		<appender-ref ref="syslog" />
+    </logger>
+	
+	<root>
+		<appender-ref ref="stdout" />
+		<appender-ref ref="errlog" />
+	</root>
+</configuration>

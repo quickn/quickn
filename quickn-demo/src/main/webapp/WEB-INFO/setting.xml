@@ -1,0 +1,76 @@
+<config>
+	<!--（必须） 指定应用的根package，所有内部自动注入都依赖于此package名称，请设置准确。 -->
+	<package>cn.json.demo</package>
+	<license>d3c25211c89172bc97ec7bf1cc1e7611038e8619c9c80a722bf0e97f3f1aa85334518a9908e1ffda4e15f01a6e741a75f06b6ebb380205bdf092e36d9e70139f60ed89fd0cee87026c6a434d596c65f348bc1bb80a7f6155dc82d7f87ba4141c8c4a0a063418802d58d1bc215d299d395ba0bba6ff716550e0546a802cc8d3e983bc525a66561fed6a062ec1870f553f32aa148ed5babbde8fa32f343c99f9fb3765d5d87018ff16f058a2e8274032c4f1ae2f3ed8879e644606bb8ed1cd52c3cbf2bcb0ccfc8d569dda68be90c0e353ff0f530a0be671e36c1f70ac5be6908eb3b81136cac812e1d03431e1a045aba87017dd96c4c1081cb61144fb6b03ca7204fe0781e747b0035e56d07a2e11869c6b6142b0cb69e0e79db0d6934c7f6cff7fe747cb8d3286991e145945756492ddb6bc6c9238eb0e8ef5bc7bd3a8447111f09563b3119d3721e817d3eaad50d03d2bf5360a0319eca3f9d7d29fe0b7a8e3917d893aef710178932dc8972c546eb935883bbb0c9cfe8a3e8ba3512f625f4a</license>
+	<web>
+		<!--（可选，缺省为root目录下的upload目录，大小为4M) 设置上传文件存放的路径和上传文件的最大尺寸 -->
+		<upload>
+			<directory>d:/temp</directory>
+			<max-size>2096</max-size>
+		</upload>
+		<!-- (可选)设置Request的编码类型。 -->
+		<charset>utf-8</charset>
+		<long-dateformat>yyyy-MM-dd HH:mm:ss</long-dateformat>
+		<short-dateformat>yyyy-MM-dd</short-dateformat>
+		<!-- (可选，缺省使用cn.vivame.session.MemHttpSession,你还可以选择MemCacheHttpSession进行分布式Session存储，缺省超时30分钟) 
+			HttpSession的设置。 -->
+		<!-- 
+		<session>
+			<class>cn.quickj.session.SimpleCache</class>
+			<timeout>7200</timeout>
+		</session>
+		 -->
+		<session>
+			<class>cn.json.quicknCore.session.RedisHttpSession</class>
+			<timeout>7200</timeout>
+		</session>
+		<!-- 当应用直接输入根路径的时候，缺省跳转到指定的action中。 -->
+		<defaultUri>/index</defaultUri>
+	</web>
+	<plugins>
+
+	</plugins>
+	<!--( 可选，缺省使用SimpleCache，可以使用MemCache)cache类的设置及参数。 -->
+	<!-- 
+ 	<cache>
+		<class>cn.quickj.cache.SimpleCache</class>
+		<param>capacity=50000</param>
+	</cache>
+	 -->
+	<cache> 
+		<class>cn.json.quicknCore.cache.RedisCache</class>
+		<param>{min:5,max:100,idle:10000,maxWait:5000,host:"127.0.0.1",port:6379,master:true}</param> 
+	</cache> 
+	<!-- 使用memCache的设置方法。参数形式为：Cache服务器的地址,权重 -->
+	<!-- cache> <class>cn.vivame.cache.MemCache</class> <param>[127.0.0.1:11211,3],[127.0.0.1:11211,1]</param> 
+		</cache -->
+	<!-- 数据库设置 -->
+	<database>
+		<!-- 数据库的表前缀(暂时没有使用) -->
+		<prefix />
+		<development>
+			<driver>com.mysql.jdbc.Driver</driver>
+			<url>jdbc:mysql://localhost:3306/itv?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8
+			</url>
+			<user>root</user>
+			<password>baijunli</password>
+			<pool>
+				<maxActive>10</maxActive>
+				<initActive>2</initActive>
+				<maxIdle>1800</maxIdle>
+			</pool>
+		</development>
+		<production>
+			<driver>com.mysql.jdbc.Driver</driver>
+			<url>jdbc:mysql://localhost:3306/itv?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8
+			</url>
+			<user>root</user>
+			<password>baijunli</password>
+			<pool>
+				<maxActive>10</maxActive>
+				<initActive>2</initActive>
+				<maxIdle>1800</maxIdle>
+			</pool>
+		</production>
+	</database>
+</config>

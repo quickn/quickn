@@ -1,6 +1,6 @@
 package cn.json;
 
-import cn.json.common.AbstractApplication;
+import cn.json.quicknCore.common.AbstractApplication;
 import com.google.inject.Module;
 
 import java.util.ArrayList;

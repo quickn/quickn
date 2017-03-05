@@ -1,9 +1,9 @@
 package cn.json;
 
 
-import cn.json.action.Action;
-import cn.json.session.MemHttpSession;
-import cn.json.session.Session;
+import cn.json.quicknCore.action.Action;
+import cn.json.quicknCore.session.MemHttpSession;
+import cn.json.quicknCore.session.Session;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

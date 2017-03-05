@@ -1,10 +1,10 @@
 package cn.json;
 
 
-import cn.json.common.AbstractApplication;
-import cn.json.common.Application;
-import cn.json.common.Setting;
-import cn.json.utils.Dom4jUtils;
+import cn.json.quicknCore.common.AbstractApplication;
+import cn.json.quicknCore.common.Application;
+import cn.json.quicknCore.common.Setting;
+import cn.json.quicknCore.quickn.utils.Dom4jUtils;
 import junit.framework.TestCase;
 import org.dom4j.Document;
 import org.dom4j.Element;
@@ -35,7 +35,7 @@ public class QuickjBaseTestCase extends TestCase {
 						.getElement(
 								doc.getRootElement(),
 								"/web-app/filter[filter-name='quickj']/init-param[param-name='application']/param-value");
-				String clazz = "cn.json.WebApplication";
+				String clazz = "cn.json.quicknCore.WebApplication";
 				if (e != null)
 					clazz = e.getTextTrim();
 				app = (Application) Class.forName(clazz).newInstance();
