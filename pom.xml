@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.json</groupId>
+    <artifactId>quickn</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>quickn-core</module>
+        <module>quickn-demo</module>
+    </modules>
+
+
+
+    <name>quickn</name>
+    <description>quickn</description>
+    <url>https://github.com/liuyun96/quickn</url>
+
+
+    <developers>
+        <developer>
+            <name>json</name>
+            <email>260418992@qq.com</email>
+            <organization>json</organization>
+            <organizationUrl>暂无</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:https://github.com/liuyun96/quickn.git</connection>
+        <url>https://github.com/liuyun96/quickn</url>
+        <developerConnection>scm:git:https://github.com/liuyun96/quickn.git</developerConnection>
+    </scm>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <netty.version>4.1.0.Final</netty.version>
+        <netty.groupId>io.netty</netty.groupId>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.source.jdk>1.7</java.source.jdk>
+        <spring.version>4.2.5.RELEASE</spring.version>
+        <snappy-java.version>1.1.1.6</snappy-java.version>
+        <org.slf4j.version>1.7.5</org.slf4j.version>
+        <apache.curator.version>2.7.1</apache.curator.version>
+        <esotericsoftware.kryo.version>2.24.0</esotericsoftware.kryo.version>
+        <caucho.hession.version>4.0.38</caucho.hession.version>
+        <google.guava.version>17.0</google.guava.version>
+        <commons-pool2.version>2.2</commons-pool2.version>
+        <alibaba.fastjson.version>1.1.36</alibaba.fastjson.version>
+        <logback-classic.version>1.0.13</logback-classic.version>
+        <log4j.version>1.2.16</log4j.version>
+        <commons-lang3.version>3.1</commons-lang3.version>
+        <jersey.version>1.19</jersey.version>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>java8</id>
+            <activation>
+                <jdk>1.8</jdk>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                                <configuration>
+                                    <additionalparam>-Xdoclint:none</additionalparam>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>2.2.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>2.9.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.5</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <!-- http://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>3.5.1</version>
+                        <!-- Java8 -->
+                        <configuration>
+                            <source>${java.source.jdk}</source>
+                            <target>${java.source.jdk}</target>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                </snapshotRepository>
+                <repository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
+            </distributionManagement>
+        </profile>
+    </profiles>
+
+    <dependencies>
+
+
+
+    </dependencies>
+
+</project>
